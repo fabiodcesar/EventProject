@@ -4,7 +4,7 @@ namespace EventProject
 {
     public interface IMediatorHandler
     {
-        Task Publish<T>(T eventToPublish) where T : Message;
+        Task Publish<T>(T eventToPublish) where T : MessageBase;
     }
 
     /// <summary>
@@ -19,7 +19,7 @@ namespace EventProject
             _mediator = mediator;
         }
 
-        public async Task Publish<T>(T evento) where T : Message
+        public async Task Publish<T>(T evento) where T : MessageBase
         {
             await _mediator.Publish(evento);
         }

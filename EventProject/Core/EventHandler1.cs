@@ -2,7 +2,7 @@
 
 namespace EventProject
 {
-    public class Message1 : Message
+    public class Message1 : MessageBase
     {
         public Message1(Guid id) : base(id) { }
     }
