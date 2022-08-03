@@ -5,6 +5,7 @@ namespace EventProject.Controllers
     public class Model
     {
         public Guid Id { get; set; }
+        public string Parameter { get; set; }
     }
 
     [ApiController]
@@ -20,7 +21,7 @@ namespace EventProject.Controllers
         [HttpPost()]
         public async Task<IActionResult> UpdateQuantity(Model model)
         {
-            var result = await _service1.Invoke(model.Id);
+            var result = await _service1.Invoke(model.Id, model.Parameter);
             return Ok(result);
         }
     }
