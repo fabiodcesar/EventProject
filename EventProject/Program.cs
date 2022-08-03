@@ -7,8 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
-// Register the MediatR wrapper
-builder.Services.AddScoped<IMediatorHandler, MediatorHandler>();
+builder.Services.AddScoped<IEventPublisher, EventPublisher>();
 
 // Register the service
 builder.Services.AddScoped<IService1, Service1>();

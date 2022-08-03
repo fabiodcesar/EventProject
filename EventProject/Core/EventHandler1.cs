@@ -9,18 +9,18 @@ namespace EventProject
 
     public class EventHandler1 : INotificationHandler<Message1>
     {
-        private readonly IMediator _mediator;
         private readonly ILogger<EventHandler1> _logger;
-        public EventHandler1(IMediator mediator, ILogger<EventHandler1> logger)
+        private readonly IEventPublisher _publisher;
+        public EventHandler1(ILogger<EventHandler1> logger, IEventPublisher publisher)
         {
-            _mediator = mediator;
             _logger = logger;
+            _publisher = publisher;
         }
 
         public async Task Handle(Message1 message, CancellationToken cancellationToken)
         {
             _logger.LogInformation($"{typeof(EventHandler1).Name} [${message.Id}]");
-            await _mediator.Publish(new Message2(message.Id), cancellationToken);
+            await _publisher.PublishMessage2(message.Id);
         }
     }
 }

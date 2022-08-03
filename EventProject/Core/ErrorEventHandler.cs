@@ -2,10 +2,10 @@
 
 namespace EventProject
 {
-    public class ErrorEvent : MessageBase
+    public class ErrorEvent : INotification
     {
         private readonly string[] _errors;
-        public ErrorEvent(string[] errors) : base(Guid.NewGuid())
+        public ErrorEvent(string[] errors)
         {
             _errors = errors;
         }
