@@ -1,8 +1,8 @@
-﻿using EventProject.Core.Events;
-using EventProject.Core.Publishers;
+﻿using EventProject.Common.Events;
+using EventProject.Common.Publishers;
 using MediatR;
 
-namespace EventProject.Core.Handlers
+namespace EventProject.Common.Handlers
 {
     public sealed class EventHandler2 : INotificationHandler<Event2>
     {

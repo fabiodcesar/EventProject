@@ -1,4 +1,4 @@
-using EventProject.Core.Publishers;
+using EventProject.Common.Publishers;
 using EventProject.Domain.Services;
 using MediatR;
 using System.Reflection;

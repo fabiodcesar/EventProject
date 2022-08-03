@@ -1,7 +1,7 @@
-﻿using EventProject.Core.Events;
+﻿using EventProject.Common.Events;
 using MediatR;
 
-namespace EventProject.Core.Handlers
+namespace EventProject.Common.Handlers
 {
     public sealed class EventHandler3 : INotificationHandler<Event3>
     {

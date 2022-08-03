@@ -1,4 +1,4 @@
-﻿namespace EventProject.Core.Events
+﻿namespace EventProject.Common.Events
 {
     public sealed class Event3 : DomainEvent
     {

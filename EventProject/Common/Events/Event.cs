@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace EventProject.Core.Events
+namespace EventProject.Common.Events
 {
     public abstract class Event : INotification { }
 }

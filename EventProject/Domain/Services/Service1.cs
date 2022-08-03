@@ -1,4 +1,4 @@
-﻿using EventProject.Core.Publishers;
+﻿using EventProject.Common.Publishers;
 
 namespace EventProject.Domain.Services
 {
