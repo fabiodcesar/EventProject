@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using EventProject.Core.Events;
+using MediatR;
 
-namespace EventProject
+namespace EventProject.Core.Handlers
 {
-    public class ErrorEvent : INotification
+    public sealed class ErrorEvent : Event
     {
         private readonly string[] _errors;
         public ErrorEvent(string[] errors)
@@ -13,7 +14,7 @@ namespace EventProject
         public string[] Errors { get { return _errors; } }
     }
 
-    public class ErrorEventHandler : INotificationHandler<ErrorEvent>
+    public sealed class ErrorEventHandler : INotificationHandler<ErrorEvent>
     {
         public async Task Handle(ErrorEvent errorEvent, CancellationToken cancellationToken)
         {

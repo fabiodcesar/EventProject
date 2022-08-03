@@ -1,16 +1,18 @@
-﻿namespace EventProject
+﻿using EventProject.Core.Publishers;
+
+namespace EventProject.Domain.Services
 {
     public interface IService1
     {
         Task Invoke(Guid id, string parameter);
     }
 
-    public class Service1 : IService1
+    public sealed class Service1 : IService1
     {
         private readonly ILogger<Service1> _logger;
-        private readonly IEventPublisher _publisher;
+        private readonly IPublisher1 _publisher;
 
-        public Service1(ILogger<Service1> logger, IEventPublisher publisher)
+        public Service1(ILogger<Service1> logger, IPublisher1 publisher)
         {
             _logger = logger;
             _publisher = publisher;
@@ -22,11 +24,11 @@
 
             if (string.IsNullOrEmpty(parameter))
             {
-                await _publisher.PublishErrors(new string[] { "The parameter is required" });
+                await _publisher.ThrowErrors(new string[] { "The parameter is required" });
                 return;
             }
 
-            await _publisher.PublishMessage1(id);
+            await _publisher.Message1(id);
         }
     }
 }

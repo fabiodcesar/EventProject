@@ -1,13 +1,9 @@
-﻿using MediatR;
+﻿using EventProject.Core.Events;
+using MediatR;
 
-namespace EventProject
+namespace EventProject.Core.Handlers
 {
-    public class Event3 : Event
-    {
-        public Event3(Guid id) : base(id) { }
-    }
-
-    public class EventHandler3 : INotificationHandler<Event3>
+    public sealed class EventHandler3 : INotificationHandler<Event3>
     {
         private readonly ILogger<EventHandler3> _logger;
         public EventHandler3(ILogger<EventHandler3> logger)

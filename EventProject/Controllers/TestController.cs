@@ -1,3 +1,4 @@
+using EventProject.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventProject.Controllers

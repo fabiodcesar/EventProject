@@ -1,4 +1,5 @@
-using EventProject;
+using EventProject.Core.Publishers;
+using EventProject.Domain.Services;
 using MediatR;
 using System.Reflection;
 
@@ -7,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<IEventPublisher, EventPublisher>();
+builder.Services.AddScoped<IPublisher1, Publisher1>();
 
 // Register the service
 builder.Services.AddScoped<IService1, Service1>();

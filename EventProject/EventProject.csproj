@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Core\MediatorHandler.cs" />
+    <Compile Remove="Domain\MediatorHandler.cs" />
   </ItemGroup>
 
   <ItemGroup>
