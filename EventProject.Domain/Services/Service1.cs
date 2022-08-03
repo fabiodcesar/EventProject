@@ -1,4 +1,5 @@
-﻿using EventProject.Common.Publishers;
+﻿using EventProject.Domain.Publishers;
+using Microsoft.Extensions.Logging;
 
 namespace EventProject.Domain.Services
 {

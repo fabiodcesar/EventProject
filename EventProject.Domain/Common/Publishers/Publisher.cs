@@ -1,7 +1,7 @@
-﻿using EventProject.Common.Handlers;
+﻿using EventProject.Domain.Common.Handlers;
 using MediatR;
 
-namespace EventProject.Common.Publishers
+namespace EventProject.Domain.Common.Publishers
 {
     public interface IPublisher
     {

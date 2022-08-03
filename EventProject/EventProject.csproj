@@ -7,13 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Domain\MediatorHandler.cs" />
+    <Compile Remove="Handlers\**" />
+    <Content Remove="Handlers\**" />
+    <EmbeddedResource Remove="Handlers\**" />
+    <None Remove="Handlers\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EventProject.Application\EventProject.Application.csproj" />
   </ItemGroup>
 
 </Project>

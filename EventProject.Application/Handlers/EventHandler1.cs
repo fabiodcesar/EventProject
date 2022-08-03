@@ -1,10 +1,11 @@
-﻿using EventProject.Common.Events;
-using EventProject.Common.Publishers;
+﻿using EventProject.Domain.Events;
+using EventProject.Domain.Publishers;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
-namespace EventProject.Common.Handlers
+namespace EventProject.Application.Handlers
 {
-    public sealed class EventHandler1 : INotificationHandler<Event1>
+    public sealed class EventHandler1 : EventHandler, INotificationHandler<Event1>
     {
         private readonly ILogger<EventHandler1> _logger;
         private readonly IPublisher1 _publisher;

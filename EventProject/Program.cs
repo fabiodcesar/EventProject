@@ -1,4 +1,4 @@
-using EventProject.Common.Publishers;
+using EventProject.Domain.Publishers;
 using EventProject.Domain.Services;
 using MediatR;
 using System.Reflection;
@@ -13,8 +13,8 @@ builder.Services.AddScoped<IPublisher1, Publisher1>();
 // Register the service
 builder.Services.AddScoped<IService1, Service1>();
 
-//Scans for all handlers, then you don't have to register every handler in the container
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+//Scans for all handlers
+builder.Services.AddMediatR(typeof(EventProject.Application.Handlers.EventHandler));
 
 var app = builder.Build();
 

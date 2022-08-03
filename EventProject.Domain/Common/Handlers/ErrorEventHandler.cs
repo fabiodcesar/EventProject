@@ -1,7 +1,7 @@
-﻿using EventProject.Common.Events;
+﻿using EventProject.Domain.Common.Events;
 using MediatR;
 
-namespace EventProject.Common.Handlers
+namespace EventProject.Domain.Common.Handlers
 {
     public sealed class ErrorEvent : Event
     {

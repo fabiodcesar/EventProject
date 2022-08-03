@@ -1,9 +1,10 @@
-﻿using EventProject.Common.Events;
+﻿using EventProject.Domain.Common.Publishers;
+using EventProject.Domain.Events;
 using MediatR;
 
-namespace EventProject.Common.Publishers
+namespace EventProject.Domain.Publishers
 {
-    public interface IPublisher1 : IPublisher
+    public interface IPublisher1: Common.Publishers.IPublisher
     {
         Task Message1(Guid id);
         Task Message2(Guid id);
@@ -13,7 +14,6 @@ namespace EventProject.Common.Publishers
     public sealed class Publisher1 : Publisher, IPublisher1
     {
         public Publisher1(IMediator mediator) : base(mediator) { }
-
 
         public async Task Message1(Guid id)
         {
