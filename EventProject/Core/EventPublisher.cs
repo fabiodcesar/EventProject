@@ -21,17 +21,17 @@ namespace EventProject
 
         public async Task PublishMessage1(Guid id)
         {
-            await _mediator.Publish(new Message1(id));
+            await _mediator.Publish(new Event1(id));
         }
 
         public async Task PublishMessage2(Guid id)
         {
-            await _mediator.Publish(new Message2(id));
+            await _mediator.Publish(new Event2(id));
         }
 
         public async Task PublishMessage3(Guid id)
         {
-            await _mediator.Publish(new Message3(id));
+            await _mediator.Publish(new Event3(id));
         }
 
         public async Task PublishErrors(string[] errors)

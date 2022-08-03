@@ -31,6 +31,5 @@ namespace EventProject
             var errors = sb.ToString();
             throw new ArgumentException(errors);
         }
-
     }
 }

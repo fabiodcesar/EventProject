@@ -2,12 +2,12 @@
 
 namespace EventProject
 {
-    public class Message2 : MessageBase
+    public class Event2 : Event
     {
-        public Message2(Guid id) : base(id) { }
+        public Event2(Guid id) : base(id) { }
     }
 
-    public class EventHandler2 : INotificationHandler<Message2>
+    public class EventHandler2 : INotificationHandler<Event2>
     {
         private readonly ILogger<EventHandler2> _logger;
         private readonly IEventPublisher _publisher;
@@ -17,10 +17,10 @@ namespace EventProject
             _publisher = publisher;
         }
 
-        public async Task Handle(Message2 message, CancellationToken cancellationToken)
+        public async Task Handle(Event2 event2, CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"{typeof(EventHandler2).Name} [${message.Id}]");
-            await _publisher.PublishMessage3(message.Id);
+            _logger.LogInformation($"{typeof(EventHandler2).Name} [${event2.Id}]");
+            await _publisher.PublishMessage3(event2.Id);
         }
     }
 }
