@@ -1,7 +1,6 @@
 using EventProject.Domain.Publishers;
 using EventProject.Domain.Services;
 using MediatR;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +13,7 @@ builder.Services.AddScoped<IPublisher1, Publisher1>();
 builder.Services.AddScoped<IService1, Service1>();
 
 //Scans for all handlers
-builder.Services.AddMediatR(typeof(EventProject.Application.Handlers.EventHandler));
+builder.Services.AddMediatR(typeof(EventProject.Application.Handlers.EventHandlerBase));
 
 var app = builder.Build();
 

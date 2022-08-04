@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace EventProject.Application.Handlers
 {
-    public sealed class EventHandler2 : EventHandler, INotificationHandler<Event2>
+    public sealed class EventHandler2 : EventHandlerBase, INotificationHandler<Event2>
     {
         private readonly ILogger<EventHandler2> _logger;
         private readonly IPublisher1 _publisher;

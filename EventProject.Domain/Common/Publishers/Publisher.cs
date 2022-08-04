@@ -1,4 +1,4 @@
-﻿using EventProject.Domain.Common.Handlers;
+﻿using EventProject.Domain.Common.Events;
 using MediatR;
 
 namespace EventProject.Domain.Common.Publishers

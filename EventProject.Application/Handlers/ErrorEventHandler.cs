@@ -2,20 +2,9 @@
 using EventProject.Domain.Common.Exceptions;
 using MediatR;
 
-namespace EventProject.Domain.Common.Handlers
+namespace EventProject.Application.Handlers
 {
-    public sealed class ErrorEvent : Event
-    {
-        private readonly string[] _errors;
-        public ErrorEvent(string[] errors)
-        {
-            _errors = errors;
-        }
-
-        public string[] Errors { get { return _errors; } }
-    }
-
-    public sealed class ErrorEventHandler : INotificationHandler<ErrorEvent>
+    public class ErrorEventHandler : EventHandlerBase, INotificationHandler<ErrorEvent>
     {
         public async Task Handle(ErrorEvent errorEvent, CancellationToken cancellationToken)
         {
