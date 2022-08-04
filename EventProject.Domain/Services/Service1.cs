@@ -1,4 +1,5 @@
-﻿using EventProject.Domain.Publishers;
+﻿using EventProject.Domain.Common.Exceptions;
+using EventProject.Domain.Publishers;
 using Microsoft.Extensions.Logging;
 
 namespace EventProject.Domain.Services
@@ -11,12 +12,12 @@ namespace EventProject.Domain.Services
     public sealed class Service1 : IService1
     {
         private readonly ILogger<Service1> _logger;
-        private readonly IBus _bus;
+        private readonly IPublisher _publisher;
 
-        public Service1(ILogger<Service1> logger, IBus bus)
+        public Service1(ILogger<Service1> logger, IPublisher publisher)
         {
             _logger = logger;
-            _bus = bus;
+            _publisher = publisher;
         }
 
         public async Task Invoke(Guid id, string parameter)
@@ -25,11 +26,10 @@ namespace EventProject.Domain.Services
 
             if (string.IsNullOrEmpty(parameter))
             {
-                await _bus.ThrowErrors(new string[] { "The parameter is required" });
-                return;
+                throw new DomainException("The parameter is required");
             }
 
-            await _bus.Message1(id);
+            await _publisher.Event1(id);
         }
     }
 }

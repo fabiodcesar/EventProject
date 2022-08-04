@@ -4,18 +4,18 @@ using MediatR;
 
 namespace EventProject.Domain.Publishers
 {
-    public interface IBus
+    public interface IPublisher
     {
-        Task Message1(Guid id);
-        Task Message2(Guid id);
-        Task Message3(Guid id);
+        Task Event1(Guid id);
+        Task Event2(Guid id);
+        Task Event3(Guid id);
         Task ThrowErrors(string[] errors);
     }
 
-    public class Bus : IBus
+    public class Publisher : IPublisher
     {
         protected readonly IMediator _mediator;
-        public Bus(IMediator mediator)
+        public Publisher(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -25,17 +25,17 @@ namespace EventProject.Domain.Publishers
             await _mediator.Publish(new ErrorEvent(errors));
         }
 
-        public async Task Message1(Guid id)
+        public async Task Event1(Guid id)
         {
             await _mediator.Publish(new Event1(id));
         }
 
-        public async Task Message2(Guid id)
+        public async Task Event2(Guid id)
         {
             await _mediator.Publish(new Event2(id));
         }
 
-        public async Task Message3(Guid id)
+        public async Task Event3(Guid id)
         {
             await _mediator.Publish(new Event3(id));
         }
