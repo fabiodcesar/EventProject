@@ -1,4 +1,5 @@
 ﻿using EventProject.Domain.Common.Events;
+using EventProject.Domain.Common.Exceptions;
 using MediatR;
 
 namespace EventProject.Domain.Common.Handlers
@@ -30,7 +31,9 @@ namespace EventProject.Domain.Common.Handlers
             }
 
             var errors = sb.ToString();
-            throw new ArgumentException(errors);
+
+            //TODO: This is not working!!!
+            throw new DomainException(errors);
         }
     }
 }
