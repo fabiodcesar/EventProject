@@ -11,12 +11,12 @@ namespace EventProject.Domain.Services
     public sealed class Service1 : IService1
     {
         private readonly ILogger<Service1> _logger;
-        private readonly IPublisher1 _publisher;
+        private readonly IBus _bus;
 
-        public Service1(ILogger<Service1> logger, IPublisher1 publisher)
+        public Service1(ILogger<Service1> logger, IBus bus)
         {
             _logger = logger;
-            _publisher = publisher;
+            _bus = bus;
         }
 
         public async Task Invoke(Guid id, string parameter)
@@ -25,11 +25,11 @@ namespace EventProject.Domain.Services
 
             if (string.IsNullOrEmpty(parameter))
             {
-                await _publisher.ThrowErrors(new string[] { "The parameter is required" });
+                await _bus.ThrowErrors(new string[] { "The parameter is required" });
                 return;
             }
 
-            await _publisher.Message1(id);
+            await _bus.Message1(id);
         }
     }
 }

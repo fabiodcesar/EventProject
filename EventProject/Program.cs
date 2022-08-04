@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<IPublisher1, Publisher1>();
+builder.Services.AddScoped<IBus, Bus>();
 
 // Register the service
 builder.Services.AddScoped<IService1, Service1>();

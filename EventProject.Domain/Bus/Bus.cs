@@ -1,19 +1,29 @@
-﻿using EventProject.Domain.Common.Publishers;
+﻿using EventProject.Domain.Common.Events;
 using EventProject.Domain.Events;
 using MediatR;
 
 namespace EventProject.Domain.Publishers
 {
-    public interface IPublisher1: Common.Publishers.IPublisher
+    public interface IBus
     {
         Task Message1(Guid id);
         Task Message2(Guid id);
         Task Message3(Guid id);
+        Task ThrowErrors(string[] errors);
     }
 
-    public sealed class Publisher1 : Publisher, IPublisher1
+    public class Bus : IBus
     {
-        public Publisher1(IMediator mediator) : base(mediator) { }
+        protected readonly IMediator _mediator;
+        public Bus(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+        public async Task ThrowErrors(string[] errors)
+        {
+            await _mediator.Publish(new ErrorEvent(errors));
+        }
 
         public async Task Message1(Guid id)
         {

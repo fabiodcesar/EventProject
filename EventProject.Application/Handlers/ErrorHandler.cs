@@ -4,13 +4,13 @@ using MediatR;
 
 namespace EventProject.Application.Handlers
 {
-    public class ErrorEventHandler : EventHandlerBase, INotificationHandler<ErrorEvent>
+    public class ErrorHandler : EventHandlerBase, INotificationHandler<ErrorEvent>
     {
         public async Task Handle(ErrorEvent errorEvent, CancellationToken cancellationToken)
         {
             if (errorEvent.Errors == null || errorEvent.Errors.Length == 0)
             {
-                throw new Exception($"{typeof(ErrorEventHandler).Name}: error colletion should not be empty");
+                throw new Exception($"{typeof(ErrorHandler).Name}: error colletion should not be empty");
             }
 
             var sb = new System.Text.StringBuilder();

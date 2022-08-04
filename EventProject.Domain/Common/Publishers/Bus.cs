@@ -3,16 +3,16 @@ using MediatR;
 
 namespace EventProject.Domain.Common.Publishers
 {
-    public interface IPublisher
+    public interface IBus
     {
         Task ThrowErrors(string[] errors);
     }
 
-    public abstract class Publisher : IPublisher
+    public abstract class Bus : IBus
     {
         protected readonly IMediator _mediator;
 
-        public Publisher(IMediator mediator)
+        public Bus(IMediator mediator)
         {
             _mediator = mediator;
         }

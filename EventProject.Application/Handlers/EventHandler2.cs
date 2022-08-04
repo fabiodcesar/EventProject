@@ -8,17 +8,17 @@ namespace EventProject.Application.Handlers
     public sealed class EventHandler2 : EventHandlerBase, INotificationHandler<Event2>
     {
         private readonly ILogger<EventHandler2> _logger;
-        private readonly IPublisher1 _publisher;
-        public EventHandler2(ILogger<EventHandler2> logger, IPublisher1 publisher)
+        private readonly IBus _bus;
+        public EventHandler2(ILogger<EventHandler2> logger, IBus bus)
         {
             _logger = logger;
-            _publisher = publisher;
+            _bus = bus;
         }
 
         public async Task Handle(Event2 event2, CancellationToken cancellationToken)
         {
             _logger.LogInformation($"{typeof(EventHandler2).Name} [${event2.Id}]");
-            await _publisher.Message3(event2.Id);
+            await _bus.Message3(event2.Id);
         }
     }
 }
