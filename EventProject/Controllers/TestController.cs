@@ -20,7 +20,7 @@ namespace EventProject.Controllers
         }
 
         [HttpPost()]
-        public async Task<IActionResult> UpdateQuantity(Model model)
+        public async Task<IActionResult> Invoke(Model model)
         {
             await _service1.Invoke(model.Id, model.Parameter);
             return Ok();

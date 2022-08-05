@@ -1,4 +1,5 @@
 using EventProject.Application.Handlers;
+using EventProject.Domain.Bus;
 using Microsoft.Extensions.Logging;
 using Moq;
 
@@ -14,9 +15,9 @@ namespace EventProject.Test
         public async void Logged_As_Expected_For_EventHandler1()
         {
             //Arrange
-            var publisherMock = new Mock<Domain.Publishers.IPublisher>();
+            var busMock = new Mock<IEventBus>();
             var loggerMock = new Mock<ILogger<EventHandler1>>();
-            var handler = new EventHandler1(loggerMock.Object, publisherMock.Object);
+            var handler = new EventHandler1(loggerMock.Object, busMock.Object);
             var domainEvent = new Domain.Events.Event1(Guid.NewGuid());
 
             //Act
@@ -37,9 +38,9 @@ namespace EventProject.Test
         public async void Logged_As_Expected_For_EventHandler2()
         {
             //Arrange
-            var publisherMock = new Mock<Domain.Publishers.IPublisher>();
+            var busMock = new Mock<IEventBus>();
             var loggerMock = new Mock<ILogger<EventHandler2>>();
-            var handler = new EventHandler2(loggerMock.Object, publisherMock.Object);
+            var handler = new EventHandler2(loggerMock.Object, busMock.Object);
             var domainEvent = new Domain.Events.Event2(Guid.NewGuid());
 
             //Act

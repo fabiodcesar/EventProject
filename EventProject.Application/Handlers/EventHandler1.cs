@@ -1,4 +1,5 @@
-﻿using EventProject.Domain.Common.Exceptions;
+﻿using EventProject.Domain.Bus;
+using EventProject.Domain.Common.Exceptions;
 using EventProject.Domain.Events;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -8,11 +9,11 @@ namespace EventProject.Application.Handlers
     public sealed class EventHandler1 : EventHandlerBase, INotificationHandler<Event1>
     {
         private readonly ILogger<EventHandler1> _logger;
-        private readonly Domain.Publishers.IPublisher _publisher;
-        public EventHandler1(ILogger<EventHandler1> logger, Domain.Publishers.IPublisher publisher)
+        private readonly IEventBus _bus;
+        public EventHandler1(ILogger<EventHandler1> logger, IEventBus bus)
         {
             _logger = logger;
-            _publisher = publisher;
+            _bus = bus;
         }
 
         public async Task Handle(Event1 event1, CancellationToken cancellationToken)
@@ -24,7 +25,7 @@ namespace EventProject.Application.Handlers
                 throw new DomainException($"{typeof(EventHandler1).Name} Forbiden Guid [${event1.Id}]");
             }
 
-            await _publisher.Event2(event1.Id);
+            await _bus.Event2(event1.Id);
         }
     }
 }

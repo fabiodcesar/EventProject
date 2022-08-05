@@ -1,19 +1,19 @@
 ﻿using EventProject.Domain.Events;
 using MediatR;
 
-namespace EventProject.Domain.Publishers
+namespace EventProject.Domain.Bus
 {
-    public interface IPublisher
+    public interface IEventBus
     {
         Task Event1(Guid id);
         Task Event2(Guid id);
         Task Event3(Guid id);
     }
 
-    public class Publisher : IPublisher
+    public class EventBus : IEventBus
     {
         protected readonly IMediator _mediator;
-        public Publisher(IMediator mediator)
+        public EventBus(IMediator mediator)
         {
             _mediator = mediator;
         }
