@@ -14,7 +14,7 @@ namespace EventProject.Test
         public async void Logged_As_Expected_For_EventHandler1()
         {
             //Arrange
-            var publisherMock = new Mock<Domain.Publishers.IPublisher1>();
+            var publisherMock = new Mock<Domain.Publishers.IPublisher>();
             var loggerMock = new Mock<ILogger<EventHandler1>>();
             var handler = new EventHandler1(loggerMock.Object, publisherMock.Object);
             var domainEvent = new Domain.Events.Event1(Guid.NewGuid());
@@ -37,7 +37,7 @@ namespace EventProject.Test
         public async void Logged_As_Expected_For_EventHandler2()
         {
             //Arrange
-            var publisherMock = new Mock<Domain.Publishers.IPublisher1>();
+            var publisherMock = new Mock<Domain.Publishers.IPublisher>();
             var loggerMock = new Mock<ILogger<EventHandler2>>();
             var handler = new EventHandler2(loggerMock.Object, publisherMock.Object);
             var domainEvent = new Domain.Events.Event2(Guid.NewGuid());
