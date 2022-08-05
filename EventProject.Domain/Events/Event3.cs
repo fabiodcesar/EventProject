@@ -2,7 +2,7 @@
 
 namespace EventProject.Domain.Events
 {
-    public sealed class Event3 : DomainEvent
+    public sealed class Event3 : Event
     {
         public Event3(Guid id) : base(id) { }
     }
